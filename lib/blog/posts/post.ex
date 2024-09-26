@@ -1,12 +1,12 @@
-defmodule Blog.Posts.Post do
+defmodule AshBlog.Posts.Post do
   use Ash.Resource,
     data_layer: AshPostgres.DataLayer,
-    domain: Blog.Posts,
-    notifiers: [Blog.Notifiers]
+    domain: AshBlog.Posts,
+    notifiers: [AshBlog.Notifiers]
 
   postgres do
     table "posts"
-    repo Blog.Repo
+    repo AshBlog.Repo
   end
 
   actions do

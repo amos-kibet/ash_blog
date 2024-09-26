@@ -1,4 +1,4 @@
-# Blog
+# AshBlog
 
 This is a demo application, used to showcase the use of Ash framework.
 

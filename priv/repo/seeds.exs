@@ -5,12 +5,12 @@
 # Inside the script, you can read and write to any of your
 # repositories directly:
 #
-#     Blog.Repo.insert!(%Blog.SomeSchema{})
+#     AshBlog.Repo.insert!(%AshBlog.SomeSchema{})
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-alias Blog.Posts.Post
+alias AshBlog.Posts.Post
 
 # TODO: Ideally, you would want to use this code block, for performance reasons,
 # but since I want the posts to be ordered on the UI, I used sequential inserts

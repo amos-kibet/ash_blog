@@ -1,4 +1,4 @@
-defmodule Blog.Repo.Migrations.Blog.Posts do
+defmodule AshBlog.Repo.Migrations.AshBlog.Posts do
   @moduledoc """
   Updates resources based on their most recent snapshots.
 

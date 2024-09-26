@@ -1,6 +1,6 @@
-defmodule Blog.Repo do
+defmodule AshBlog.Repo do
   use AshPostgres.Repo,
-    otp_app: :blog
+    otp_app: :ash_blog
 
   def installed_extensions do
     # Add extensions here, and the migration generator will install them.

@@ -1,7 +1,7 @@
-defmodule Blog.Posts do
+defmodule AshBlog.Posts do
   use Ash.Domain
 
-  alias Blog.Posts.Post
+  alias AshBlog.Posts.Post
 
   resources do
     resource Post

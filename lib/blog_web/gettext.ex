@@ -20,5 +20,5 @@ defmodule BlogWeb.Gettext do
 
   See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
   """
-  use Gettext, otp_app: :blog
+  use Gettext, otp_app: :ash_blog
 end

@@ -1,12 +1,12 @@
 defmodule BlogWeb.PostLive.Index do
   use BlogWeb, :live_view
 
-  alias Blog.Posts
-  alias Blog.Posts.Post
+  alias AshBlog.Posts
+  alias AshBlog.Posts.Post
 
   @impl Phoenix.LiveView
   def mount(_params, _session, socket) do
-    if connected?(socket), do: Phoenix.PubSub.subscribe(Blog.PubSub, "post_creation")
+    if connected?(socket), do: Phoenix.PubSub.subscribe(AshBlog.PubSub, "post_creation")
 
     form =
       Post
@@ -15,7 +15,7 @@ defmodule BlogWeb.PostLive.Index do
 
     {:ok,
      socket
-     |> assign(:page_title, "Blog Posts")
+     |> assign(:page_title, "AshBlog Posts")
      |> assign(:load_more_token, nil)
      |> assign(:form, form)
      |> stream(:posts, [])}

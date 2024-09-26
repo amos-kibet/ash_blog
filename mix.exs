@@ -1,9 +1,9 @@
-defmodule Blog.MixProject do
+defmodule AshBlog.MixProject do
   use Mix.Project
 
   def project do
     [
-      app: :blog,
+      app: :ash_blog,
       version: "0.1.0",
       elixir: "~> 1.14",
       elixirc_paths: elixirc_paths(Mix.env()),
@@ -19,7 +19,7 @@ defmodule Blog.MixProject do
   # Type `mix help compile.app` for more information.
   def application do
     [
-      mod: {Blog.Application, []},
+      mod: {AshBlog.Application, []},
       extra_applications: [:logger, :runtime_tools]
     ]
   end
@@ -80,10 +80,10 @@ defmodule Blog.MixProject do
       "ecto.reset": ["ecto.drop", "ecto.setup"],
       test: ["ash.setup --quiet", "test"],
       "assets.setup": ["tailwind.install --if-missing", "esbuild.install --if-missing"],
-      "assets.build": ["tailwind blog", "esbuild blog"],
+      "assets.build": ["tailwind ash_blog", "esbuild ash_blog"],
       "assets.deploy": [
-        "tailwind blog --minify",
-        "esbuild blog --minify",
+        "tailwind ash_blog --minify",
+        "esbuild ash_blog --minify",
         "phx.digest"
       ],
       "ash.setup": ["ash.setup", "run priv/repo/seeds.exs"]

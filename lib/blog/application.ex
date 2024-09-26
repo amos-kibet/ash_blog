@@ -1,4 +1,4 @@
-defmodule Blog.Application do
+defmodule AshBlog.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
@@ -9,20 +9,20 @@ defmodule Blog.Application do
   def start(_type, _args) do
     children = [
       BlogWeb.Telemetry,
-      Blog.Repo,
-      {DNSCluster, query: Application.get_env(:blog, :dns_cluster_query) || :ignore},
-      {Phoenix.PubSub, name: Blog.PubSub},
+      AshBlog.Repo,
+      {DNSCluster, query: Application.get_env(:ash_blog, :dns_cluster_query) || :ignore},
+      {Phoenix.PubSub, name: AshBlog.PubSub},
       # Start the Finch HTTP client for sending emails
-      {Finch, name: Blog.Finch},
-      # Start a worker by calling: Blog.Worker.start_link(arg)
-      # {Blog.Worker, arg},
+      {Finch, name: AshBlog.Finch},
+      # Start a worker by calling: AshBlog.Worker.start_link(arg)
+      # {AshBlog.Worker, arg},
       # Start to serve requests, typically the last entry
       BlogWeb.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Blog.Supervisor]
+    opts = [strategy: :one_for_one, name: AshBlog.Supervisor]
     Supervisor.start_link(children, opts)
   end
 

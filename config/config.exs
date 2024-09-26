@@ -37,12 +37,12 @@ config :spark,
     "Ash.Domain": [section_order: [:resources, :policies, :authorization, :domain, :execution]]
   ]
 
-config :blog, :ash_domains, [Blog.Posts]
+config :ash_blog, :ash_domains, [AshBlog.Posts]
 
-config :blog,
-  ecto_repos: [Blog.Repo],
+config :ash_blog,
+  ecto_repos: [AshBlog.Repo],
   generators: [timestamp_type: :utc_datetime],
-  ash_apis: [Blog.Posts],
+  ash_apis: [AshBlog.Posts],
   repo: [
     database: "blog_dev",
     username: "postgres",
@@ -51,14 +51,14 @@ config :blog,
   ]
 
 # Configures the endpoint
-config :blog, BlogWeb.Endpoint,
+config :ash_blog, BlogWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
     formats: [html: BlogWeb.ErrorHTML, json: BlogWeb.ErrorJSON],
     layout: false
   ],
-  pubsub_server: Blog.PubSub,
+  pubsub_server: AshBlog.PubSub,
   live_view: [signing_salt: "7eBQ0IEr"]
 
 # Configures the mailer
@@ -68,12 +68,12 @@ config :blog, BlogWeb.Endpoint,
 #
 # For production it's recommended to configure a different adapter
 # at the `config/runtime.exs`.
-config :blog, Blog.Mailer, adapter: Swoosh.Adapters.Local
+config :ash_blog, AshBlog.Mailer, adapter: Swoosh.Adapters.Local
 
 # Configure esbuild (the version is required)
 config :esbuild,
   version: "0.17.11",
-  blog: [
+  ash_blog: [
     args:
       ~w(js/app.js --bundle --target=es2017 --outdir=../priv/static/assets --external:/fonts/* --external:/images/*),
     cd: Path.expand("../assets", __DIR__),
@@ -83,7 +83,7 @@ config :esbuild,
 # Configure tailwind (the version is required)
 config :tailwind,
   version: "3.4.3",
-  blog: [
+  ash_blog: [
     args: ~w(
       --config=tailwind.config.js
       --input=css/app.css

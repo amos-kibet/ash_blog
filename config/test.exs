@@ -6,7 +6,7 @@ config :ash, disable_async?: true
 # The MIX_TEST_PARTITION environment variable can be used
 # to provide built-in test partitioning in CI environment.
 # Run `mix help test` for more information.
-config :blog, Blog.Repo,
+config :ash_blog, AshBlog.Repo,
   username: "postgres",
   password: "postgres",
   hostname: "localhost",
@@ -16,13 +16,13 @@ config :blog, Blog.Repo,
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :blog, BlogWeb.Endpoint,
+config :ash_blog, BlogWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "o2apY8SB7fhkgS9GIxuR0Gpz4p5nFnm8U/yA7bm2M8SC4wpQVfw9XcYhGkTllJwb",
   server: false
 
 # In test we don't send emails
-config :blog, Blog.Mailer, adapter: Swoosh.Adapters.Test
+config :ash_blog, AshBlog.Mailer, adapter: Swoosh.Adapters.Test
 
 # Disable swoosh api client as it is only required for production adapters
 config :swoosh, :api_client, false

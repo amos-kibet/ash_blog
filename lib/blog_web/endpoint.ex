@@ -1,5 +1,5 @@
 defmodule BlogWeb.Endpoint do
-  use Phoenix.Endpoint, otp_app: :blog
+  use Phoenix.Endpoint, otp_app: :ash_blog
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.
@@ -21,7 +21,7 @@ defmodule BlogWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/",
-    from: :blog,
+    from: :ash_blog,
     gzip: false,
     only: BlogWeb.static_paths()
 
@@ -31,7 +31,7 @@ defmodule BlogWeb.Endpoint do
     socket "/phoenix/live_reload/socket", Phoenix.LiveReloader.Socket
     plug Phoenix.LiveReloader
     plug Phoenix.CodeReloader
-    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :blog
+    plug Phoenix.Ecto.CheckRepoStatus, otp_app: :ash_blog
   end
 
   plug Phoenix.LiveDashboard.RequestLogger,
