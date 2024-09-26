@@ -37,9 +37,18 @@ config :spark,
     "Ash.Domain": [section_order: [:resources, :policies, :authorization, :domain, :execution]]
   ]
 
+config :blog, :ash_domains, [Blog.Posts]
+
 config :blog,
   ecto_repos: [Blog.Repo],
-  generators: [timestamp_type: :utc_datetime]
+  generators: [timestamp_type: :utc_datetime],
+  ash_apis: [Blog.Posts],
+  repo: [
+    database: "blog_dev",
+    username: "postgres",
+    password: "postgres",
+    hostname: "localhost"
+  ]
 
 # Configures the endpoint
 config :blog, BlogWeb.Endpoint,
