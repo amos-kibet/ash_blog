@@ -1,4 +1,4 @@
-defmodule BlogWeb.Endpoint do
+defmodule AshBlogWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :ash_blog
 
   # The session will be stored in the cookie and signed,
@@ -23,7 +23,7 @@ defmodule BlogWeb.Endpoint do
     at: "/",
     from: :ash_blog,
     gzip: false,
-    only: BlogWeb.static_paths()
+    only: AshBlogWeb.static_paths()
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
@@ -49,5 +49,5 @@ defmodule BlogWeb.Endpoint do
   plug Plug.MethodOverride
   plug Plug.Head
   plug Plug.Session, @session_options
-  plug BlogWeb.Router
+  plug AshBlogWeb.Router
 end

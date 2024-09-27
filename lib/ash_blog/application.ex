@@ -8,7 +8,7 @@ defmodule AshBlog.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      BlogWeb.Telemetry,
+      AshBlogWeb.Telemetry,
       AshBlog.Repo,
       {DNSCluster, query: Application.get_env(:ash_blog, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: AshBlog.PubSub},
@@ -17,7 +17,7 @@ defmodule AshBlog.Application do
       # Start a worker by calling: AshBlog.Worker.start_link(arg)
       # {AshBlog.Worker, arg},
       # Start to serve requests, typically the last entry
-      BlogWeb.Endpoint
+      AshBlogWeb.Endpoint
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -30,7 +30,7 @@ defmodule AshBlog.Application do
   # whenever the application is updated.
   @impl true
   def config_change(changed, _new, removed) do
-    BlogWeb.Endpoint.config_change(changed, removed)
+    AshBlogWeb.Endpoint.config_change(changed, removed)
     :ok
   end
 end

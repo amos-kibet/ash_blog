@@ -1,4 +1,4 @@
-defmodule BlogWeb.Telemetry do
+defmodule AshBlogWeb.Telemetry do
   use Supervisor
   import Telemetry.Metrics
 
@@ -86,7 +86,7 @@ defmodule BlogWeb.Telemetry do
     [
       # A module, function and arguments to be invoked periodically.
       # This function must call :telemetry.execute/3 and a metric must be added above.
-      # {BlogWeb, :count_users, []}
+      # {AshBlogWeb, :count_users, []}
     ]
   end
 end

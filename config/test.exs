@@ -16,7 +16,7 @@ config :ash_blog, AshBlog.Repo,
 
 # We don't run a server during test. If one is required,
 # you can enable the server option below.
-config :ash_blog, BlogWeb.Endpoint,
+config :ash_blog, AshBlogWeb.Endpoint,
   http: [ip: {127, 0, 0, 1}, port: 4002],
   secret_key_base: "o2apY8SB7fhkgS9GIxuR0Gpz4p5nFnm8U/yA7bm2M8SC4wpQVfw9XcYhGkTllJwb",
   server: false

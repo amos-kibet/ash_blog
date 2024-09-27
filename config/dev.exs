@@ -16,7 +16,7 @@ config :ash_blog, AshBlog.Repo,
 # The watchers configuration can be used to run external
 # watchers to your application. For example, we can use it
 # to bundle .js and .css sources.
-config :ash_blog, BlogWeb.Endpoint,
+config :ash_blog, AshBlogWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
   http: [ip: {127, 0, 0, 1}, port: 4000],
@@ -53,12 +53,12 @@ config :ash_blog, BlogWeb.Endpoint,
 # different ports.
 
 # Watch static and templates for browser reloading.
-config :ash_blog, BlogWeb.Endpoint,
+config :ash_blog, AshBlogWeb.Endpoint,
   live_reload: [
     patterns: [
       ~r"priv/static/(?!uploads/).*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"priv/gettext/.*(po)$",
-      ~r"lib/blog_web/(controllers|live|components)/.*(ex|heex)$"
+      ~r"lib/ash_blog_web/(controllers|live|components)/.*(ex|heex)$"
     ]
   ]
 

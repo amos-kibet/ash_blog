@@ -1,23 +1,23 @@
-defmodule BlogWeb.Router do
-  use BlogWeb, :router
+defmodule AshBlogWeb.Router do
+  use AshBlogWeb, :router
 
   pipeline :browser do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, html: {BlogWeb.Layouts, :root}
+    plug :put_root_layout, html: {AshBlogWeb.Layouts, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
   end
 
-  scope "/", BlogWeb do
+  scope "/", AshBlogWeb do
     pipe_through :browser
 
     live "/", PostLive.Index, :index
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", BlogWeb do
+  # scope "/api", AshBlogWeb do
   #   pipe_through :api
   # end
 
@@ -33,7 +33,7 @@ defmodule BlogWeb.Router do
     scope "/dev" do
       pipe_through :browser
 
-      live_dashboard "/dashboard", metrics: BlogWeb.Telemetry
+      live_dashboard "/dashboard", metrics: AshBlogWeb.Telemetry
       forward "/mailbox", Plug.Swoosh.MailboxPreview
     end
   end

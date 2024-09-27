@@ -1,5 +1,5 @@
-defmodule BlogWeb.PostLive.Index do
-  use BlogWeb, :live_view
+defmodule AshBlogWeb.PostLive.Index do
+  use AshBlogWeb, :live_view
 
   alias AshBlog.Posts
   alias AshBlog.Posts.Post
@@ -43,6 +43,8 @@ defmodule BlogWeb.PostLive.Index do
           Post
           |> AshPhoenix.Form.for_create(:create)
           |> to_form()
+
+        JS.hide(to: "#modal")
 
         {:noreply,
          socket

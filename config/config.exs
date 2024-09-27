@@ -51,11 +51,11 @@ config :ash_blog,
   ]
 
 # Configures the endpoint
-config :ash_blog, BlogWeb.Endpoint,
+config :ash_blog, AshBlogWeb.Endpoint,
   url: [host: "localhost"],
   adapter: Bandit.PhoenixAdapter,
   render_errors: [
-    formats: [html: BlogWeb.ErrorHTML, json: BlogWeb.ErrorJSON],
+    formats: [html: AshBlogWeb.ErrorHTML, json: AshBlogWeb.ErrorJSON],
     layout: false
   ],
   pubsub_server: AshBlog.PubSub,

@@ -1,4 +1,4 @@
-defmodule BlogWeb.CoreComponents do
+defmodule AshBlogWeb.CoreComponents do
   @moduledoc """
   Provides core UI components.
 
@@ -17,7 +17,7 @@ defmodule BlogWeb.CoreComponents do
   use Phoenix.Component
 
   alias Phoenix.LiveView.JS
-  import BlogWeb.Gettext
+  import AshBlogWeb.Gettext
 
   @doc """
   Renders a modal.
@@ -661,9 +661,9 @@ defmodule BlogWeb.CoreComponents do
     # with our gettext backend as first argument. Translations are
     # available in the errors.po file (as we use the "errors" domain).
     if count = opts[:count] do
-      Gettext.dngettext(BlogWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(AshBlogWeb.Gettext, "errors", msg, msg, count, opts)
     else
-      Gettext.dgettext(BlogWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(AshBlogWeb.Gettext, "errors", msg, opts)
     end
   end
 
