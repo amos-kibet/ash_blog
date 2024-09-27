@@ -22,9 +22,11 @@ import { Socket } from "phoenix";
 import { LiveSocket } from "phoenix_live_view";
 import topbar from "../vendor/topbar";
 import InfiniteScroll from "./hooks/infinite_scroll_hook";
+import ScrollToTopHook from "./hooks/scroll_to_top_hook";
 
 let Hooks = {
   InfiniteScroll: InfiniteScroll,
+  ScrollToTopHook: ScrollToTopHook,
 };
 
 let csrfToken = document

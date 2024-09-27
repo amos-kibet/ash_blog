@@ -1,9 +1,17 @@
-<div class="container mx-auto px-4">
+<div class="container mx-auto px-4 relative">
   <h1 class="text-3xl font-bold mb-4">AshBlog Posts</h1>
 
-  <%!-- <.button class="mb-4" phx-click={JS.show(to: "#modal")}>
+  <.button class="mb-4" phx-click={JS.show(to: "#modal")}>
     Click me, will you? 😜
-  </.button> --%>
+  </.button>
+  <!-- New posts floating button -->
+  <div
+    :if={@new_posts_count > 0}
+    class="fixed top-4 left-1/2 transform -translate-x-1/2 bg-black text-white px-4 py-2 rounded-full cursor-pointer shadow-lg"
+    phx-click="show-new-posts"
+  >
+    <%= @new_posts_count %> new post<%= if @new_posts_count > 1, do: "s" %> available
+  </div>
 
   <div
     id="modal"
