@@ -2,6 +2,9 @@
 
 This is a demo application, used to showcase the use of Ash framework.
 
+![Homepage](./media/sample_ui_1.png)
+![Homepage](./media/sample_ui_2.png)
+
 To start your Phoenix server:
 
 - Run `mix setup` to install and setup dependencies
