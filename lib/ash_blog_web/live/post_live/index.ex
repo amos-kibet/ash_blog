@@ -15,11 +15,11 @@ defmodule AshBlogWeb.PostLive.Index do
 
     {:ok,
      socket
-     |> assign(:page_title, "AshBlog Posts")
-     |> assign(:load_more_token, nil)
      |> assign(:form, form)
+     |> assign(:load_more_token, nil)
      |> assign(:new_posts_count, 0)
      |> assign(:new_posts, [])
+     |> assign(:page_title, "AshBlog Posts")
      |> stream(:posts, [])}
   end
 
@@ -43,8 +43,8 @@ defmodule AshBlogWeb.PostLive.Index do
      socket
      |> assign(:new_posts_count, 0)
      |> assign(:new_posts, [])
-     |> stream(:posts, socket.assigns.new_posts, at: 0)
-     |> push_event("scroll-to-top", %{})}
+     |> push_event("scroll-to-top", %{})
+     |> stream(:posts, socket.assigns.new_posts, at: 0)}
   end
 
   @impl Phoenix.LiveView
