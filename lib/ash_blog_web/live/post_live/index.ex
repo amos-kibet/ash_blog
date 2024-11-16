@@ -50,7 +50,7 @@ defmodule AshBlogWeb.PostLive.Index do
   @impl Phoenix.LiveView
   def handle_event("save", %{"form" => params}, socket) do
     case AshPhoenix.Form.submit(socket.assigns.form, params: params) do
-      {:ok, post} ->
+      {:ok, _post} ->
         form =
           Post
           |> AshPhoenix.Form.for_create(:create)
@@ -61,8 +61,7 @@ defmodule AshBlogWeb.PostLive.Index do
         {:noreply,
          socket
          |> assign(:form, form)
-         |> put_flash(:info, "Post created successfully")
-         |> stream_insert(:posts, post, at: 0)}
+         |> put_flash(:info, "Post created successfully")}
 
       {:error, form} ->
         {:noreply, assign(socket, form: form)}
