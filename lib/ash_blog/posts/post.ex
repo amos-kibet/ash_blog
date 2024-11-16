@@ -14,7 +14,7 @@ defmodule AshBlog.Posts.Post do
 
     read :list do
       pagination keyset?: true, default_limit: 10
-      prepare build(sort: :inserted_at)
+      prepare build(sort: [inserted_at: :desc])
     end
   end
 
