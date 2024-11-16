@@ -40,6 +40,7 @@ config :spark,
 config :ash_blog, :ash_domains, [AshBlog.Posts]
 
 config :ash_blog,
+  flash_auto_disappear: 3,
   ecto_repos: [AshBlog.Repo],
   generators: [timestamp_type: :utc_datetime],
   ash_apis: [AshBlog.Posts],

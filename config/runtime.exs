@@ -20,6 +20,12 @@ if System.get_env("PHX_SERVER") do
   config :ash_blog, AshBlogWeb.Endpoint, server: true
 end
 
+flash_auto_disappear = System.get_env("FLASH_AUTO_DISAPPEAR")
+
+if flash_auto_disappear do
+  config :ash_blog, :flash_auto_disappear, String.to_integer(flash_auto_disappear)
+end
+
 if config_env() == :prod do
   database_url =
     System.get_env("DATABASE_URL") ||
