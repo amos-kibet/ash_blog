@@ -21,10 +21,12 @@ import "phoenix_html";
 import { Socket } from "phoenix";
 import { LiveSocket } from "phoenix_live_view";
 import topbar from "../vendor/topbar";
+import FlashAutoDisappear from "./hooks/flash_auto_disappear";
 import InfiniteScroll from "./hooks/infinite_scroll_hook";
 import ScrollToTopHook from "./hooks/scroll_to_top_hook";
 
 let Hooks = {
+  FlashAutoDisappear: FlashAutoDisappear,
   InfiniteScroll: InfiniteScroll,
   ScrollToTopHook: ScrollToTopHook,
 };
