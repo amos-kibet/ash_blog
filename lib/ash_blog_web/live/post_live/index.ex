@@ -24,12 +24,8 @@ defmodule AshBlogWeb.PostLive.Index do
   end
 
   @impl Phoenix.LiveView
-  def handle_params(params, _url, socket) do
-    {:noreply, apply_action(socket, socket.assigns.live_action, params)}
-  end
-
-  defp apply_action(socket, :index, _params) do
-    list_posts(socket)
+  def handle_params(_params, _url, socket) do
+    {:noreply, list_posts(socket)}
   end
 
   @impl Phoenix.LiveView
@@ -56,8 +52,6 @@ defmodule AshBlogWeb.PostLive.Index do
           |> AshPhoenix.Form.for_create(:create)
           |> to_form()
 
-        JS.hide(to: "#modal")
-
         {:noreply,
          socket
          |> assign(:form, form)
@@ -69,27 +63,28 @@ defmodule AshBlogWeb.PostLive.Index do
   end
 
   defp list_posts(%{assigns: %{load_more_token: nil}} = socket) do
-    case Posts.read(Post, action: :list, page: [limit: 10]) do
-      {:ok, %{results: posts}} ->
-        load_more_token = List.last(posts) && List.last(posts).__metadata__.keyset
-
-        socket
-        |> assign(:load_more_token, load_more_token)
-        |> stream(:posts, posts, reset: socket.assigns.load_more_token == nil)
-
-      {:error, error} ->
-        put_flash(socket, :error, "Error loading posts: #{inspect(error)}")
-    end
+    do_list_posts(socket, page: [limit: 10])
   end
 
   defp list_posts(%{assigns: %{load_more_token: load_more_token}} = socket) do
-    case Posts.read(Post, action: :list, page: [after: load_more_token, limit: 10]) do
+    do_list_posts(socket, page: [after: load_more_token, limit: 10])
+  end
+
+  defp do_list_posts(socket, opts) do
+    case Posts.read(Post, action: :list, page: opts[:page]) do
       {:ok, %{results: posts}} ->
         load_more_token = List.last(posts) && List.last(posts).__metadata__.keyset
 
+        stream_opts =
+          [
+            reset: socket.assigns.load_more_token == nil,
+            at: if(opts[:page][:after], do: -1, else: nil)
+          ]
+          |> Enum.reject(fn {_, v} -> is_nil(v) end)
+
         socket
         |> assign(:load_more_token, load_more_token)
-        |> stream(:posts, posts, at: -1, reset: socket.assigns.load_more_token == nil)
+        |> stream(:posts, posts, stream_opts)
 
       {:error, error} ->
         put_flash(socket, :error, "Error loading posts: #{inspect(error)}")
